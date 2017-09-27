@@ -1,0 +1,334 @@
+
+	
+	<!DOCTYPE html>
+	<html>
+		<head>
+			<style>
+				canvas {
+					border:1px solid #d3d3d3;
+					background-color: #f1f1f1;
+				}
+			</style>
+			    
+		</head>
+
+		<body onload="startGame()">
+		</body>
+	
+		<script>
+			var player1 = {
+				weights: [],
+				name: 'Ronc'
+			};
+			var player2 = {
+				weights: [],
+				name: 'Rojas'
+			};
+
+			var leftTorque = 75;
+			var rightTorque = -1137;
+			var turn = 1;
+			var maxWeight = 25;
+			var boardState;
+			var boardColor;
+
+			function startGame() {
+				myGameArea.start();
+			}
+
+			var myGameArea = {
+				canvas : document.createElement('canvas'),
+				start : function() {
+					this.canvas.width = 900;
+					this.canvas.height = 600;
+					this.context = this.canvas.getContext('2d');
+					document.body.insertBefore(this.canvas, document.body.childNodes[0]);
+					drawTiles(this.canvas.width, this.canvas.height);
+					drawPlayers(this.canvas.width, this.canvas.height);
+					drawWeights(this.canvas.width, this.canvas.height);
+					drawBoard(this.canvas.width, this.canvas.height);
+					drawUnusedWeights(this.canvas.width, this.canvas.height);
+
+
+					drawWin(this.canvas.width, this.canvas.height);
+
+
+				},
+			}
+
+
+			function drawTiles(width, height) {
+			boardState = [];
+				boardColor = [];
+				boardState.push(0);
+				boardState.push(0);
+				boardState.push(0);
+				boardState.push(21);
+				boardState.push(23);
+				boardState.push(22);
+				boardState.push(24);
+				boardState.push(17);
+				boardState.push(19);
+				boardState.push(18);
+				boardState.push(20);
+				boardState.push(13);
+				boardState.push(15);
+				boardState.push(14);
+				boardState.push(16);
+				boardState.push(8);
+				boardState.push(11);
+				boardState.push(10);
+				boardState.push(9);
+				boardState.push(12);
+				boardState.push(6);
+				boardState.push(1);
+				boardState.push(4);
+				boardState.push(5);
+				boardState.push(7);
+				boardState.push(3);
+				boardState.push(3);
+				boardState.push(1);
+				boardState.push(2);
+				boardState.push(2);
+				boardState.push(3);
+				boardState.push(4);
+				boardState.push(5);
+				boardState.push(6);
+				boardState.push(7);
+				boardState.push(8);
+				boardState.push(9);
+				boardState.push(10);
+				boardState.push(11);
+				boardState.push(12);
+				boardState.push(13);
+				boardState.push(14);
+				boardState.push(15);
+				boardState.push(16);
+				boardState.push(17);
+				boardState.push(18);
+				boardState.push(19);
+				boardState.push(20);
+				boardState.push(21);
+				boardState.push(22);
+				boardState.push(23);
+				boardState.push(24);
+				boardState.push(0);
+				boardState.push(0);
+				boardState.push(0);
+				boardState.push(0);
+				boardState.push(0);
+				boardState.push(0);
+				boardState.push(0);
+				boardState.push(0);
+				boardState.push(0);
+				boardColor.push(0);
+				boardColor.push(0);
+				boardColor.push(0);
+				boardColor.push(2);
+				boardColor.push(2);
+				boardColor.push(2);
+				boardColor.push(2);
+				boardColor.push(2);
+				boardColor.push(2);
+				boardColor.push(2);
+				boardColor.push(2);
+				boardColor.push(2);
+				boardColor.push(2);
+				boardColor.push(2);
+				boardColor.push(2);
+				boardColor.push(2);
+				boardColor.push(2);
+				boardColor.push(2);
+				boardColor.push(2);
+				boardColor.push(2);
+				boardColor.push(2);
+				boardColor.push(1);
+				boardColor.push(2);
+				boardColor.push(2);
+				boardColor.push(2);
+				boardColor.push(1);
+				boardColor.push(0);
+				boardColor.push(2);
+				boardColor.push(1);
+				boardColor.push(2);
+				boardColor.push(2);
+				boardColor.push(1);
+				boardColor.push(1);
+				boardColor.push(1);
+				boardColor.push(1);
+				boardColor.push(1);
+				boardColor.push(1);
+				boardColor.push(1);
+				boardColor.push(1);
+				boardColor.push(1);
+				boardColor.push(1);
+				boardColor.push(1);
+				boardColor.push(1);
+				boardColor.push(1);
+				boardColor.push(1);
+				boardColor.push(1);
+				boardColor.push(1);
+				boardColor.push(1);
+				boardColor.push(1);
+				boardColor.push(1);
+				boardColor.push(1);
+				boardColor.push(1);
+				boardColor.push(0);
+				boardColor.push(0);
+				boardColor.push(0);
+				boardColor.push(0);
+				boardColor.push(0);
+				boardColor.push(0);
+				boardColor.push(0);
+				boardColor.push(0);
+				boardColor.push(0);
+
+
+			    ctx = myGameArea.context;
+			    var start = 60;
+			    var length = width -168;
+			    var flip = 30;
+			    var step = length/60;
+			    for( var i =0; i <= 60; ++i){
+				if ( boardState[i] == 0)continue;
+				if (boardColor[i] == 1){
+				    ctx.fillStyle = "blue";
+				}else{
+				    ctx.fillStyle = "red";
+				}
+				ctx.font = "12px Consolas";
+				ctx.fillText(boardState[i], start + i * step - 3, 3 * height /4 - 60);
+
+
+			    }
+			    ctx.fill();
+			}
+
+			function drawBoard(width, height) {
+				// DRAW RECTANGULAR BOARD
+				ctx = myGameArea.context;
+				var start = 60;
+				var length = width - 168;
+				ctx.rect(start, 3 * height/4, length, 1);
+				ctx.stroke();
+
+				// INDICES FOR TICK MARKS
+				var flip = 30;
+				var step = length / 60;
+				for(var i = 0; i <= 60; ++i) {
+					ctx.fillStyle = "black";
+					ctx.font = "12px Consolas";
+					if(i % 5 == 0) {
+						ctx.fillText(i - 30, start + i * step - 3, 3 * height / 4 + 60);
+					}
+					ctx.moveTo(start + i * step, 3 * height / 4 - 10);
+					ctx.lineTo(start + i * step, 3 * height / 4 + 10);
+					ctx.stroke();
+				}
+
+				// SUPPORT at -4
+				ctx.moveTo(start + 26 * step, 3 * height / 4);
+				ctx.lineTo(start + 25 * step, 3 * height / 4 + 40);
+				ctx.lineTo(start + 27 * step, 3 * height / 4 + 40);
+				ctx.fill();
+
+				// SUPPORT AT -1
+				ctx.moveTo(start + 29 * step, 3 * height / 4);
+				ctx.lineTo(start + 28 * step, 3 * height / 4 + 40);
+				ctx.lineTo(start + 30 * step, 3 * height / 4 + 40);
+				ctx.fill();
+
+
+		}
+
+		function drawWeights(width, height){
+			ctx = myGameArea.context;
+			ctx.font = "20px Consolas";
+			ctx.fillStyle = "black";
+			var start = 60;
+			var length = width - 168;
+			var step = length/60;
+			ctx.fillText(leftTorque, start + 24 * step, 3.2 * height /4 + 60);
+			ctx.fillText(rightTorque, start + 28 * step, 3.2 * height /4 + 60);
+		}
+
+		function drawUnusedWeights(width, height){
+			ctx = myGameArea.context;
+			ctx.font = "12px Consolas";
+			ctx.fillStyle = "black";
+			var start = 60;
+			var length = width - 168;
+			var step = length/60;
+			var right = 0;
+			var down = 80;
+			for(var i = 1; i <= maxWeight; ++i){
+				var found = false;
+				for( var j = 0; j <= 60; ++j){
+					if ( boardState[j] == i && boardColor[j] == 1){
+					    found = true;
+					}
+				}
+				if ( !found ){
+					//ctx.fillText(i, start + (right * step), down * step);
+					ctx.fillText(i, start+right*step, down );
+				}
+				right = right + 2;
+				if( right > 10 ){
+					right = 0;
+					down = down + 30;
+				}
+			}
+			
+			start = (width/2)+180;
+			down = 80;
+			right = 0;
+			for(var i = 1; i <= maxWeight; ++i){
+				var found = false;
+				for( var j = 0; j <= 60; ++j){
+					if( boardState[j] == i && boardColor[j] == 2){
+						found = true;
+					}
+				}
+				if(!found){
+					ctx.fillText(i, start + right * step, down);
+
+				}
+				right = right + 2;
+				if( right > 10 ){
+					right = 0;
+					down = down + 30;
+				}
+			}
+		}
+
+		function drawPlayers(width, height) {
+			ctx = myGameArea.context;
+			// Player 1 Text
+			ctx.font = "30px Consolas";
+			ctx.fillStyle = "red";
+			ctx.fillText(player1.name, 100, 50);
+
+			// Player 2 Text
+			ctx.fillStyle = "blue";
+			ctx.fillText(player2.name, width - 250, 50);
+		}
+
+
+		function drawWin(width, height){
+			ctx = myGameArea.context;
+			ctx.font = "30px Consolas";
+			ctx.fillStyle = "black";
+			var out = player1.name;
+			if( turn == 2){
+				out = player2.name;
+			}
+			out = out + " Wins!";
+			var length = width - 168;
+			ctx.fillText(out, length/2,  height/2);
+			
+		}
+
+	    </script>
+	</html>
+
+	
