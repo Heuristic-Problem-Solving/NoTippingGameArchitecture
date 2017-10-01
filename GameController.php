@@ -56,7 +56,7 @@ class GameController {
     }
 
     function send($player, $string) {
-        socket_write($this->resources[$player], $string);
+        socket_write($this->resources[$player], "$string\n");
     }
 
     function recvMove($player) {
