@@ -42,6 +42,10 @@ while(!$myGame->gameOver) {
     $myGame->updateTime($myGame->currentTurn, $time2 - $time1);
     $myMove = explode(" ", $move);
 
+    if($myGame->gameOver) {
+        break;
+    }
+
     if ($myGame->currentState == "place") {
         $myGame->move((int)$myMove[0], (int)$myMove[1]);
     } else {

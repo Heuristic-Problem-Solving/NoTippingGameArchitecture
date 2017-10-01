@@ -30,8 +30,8 @@ class Board {
 	    // add information about the board weight, now let's do 3
         $leftTorque += 3 * $this->boardWeight;
 	    $rightTorque += 1 * $this->boardWeight;
-	$this->leftTorque = $leftTorque;
-	$this->rightTorque = $rightTorque;
+	    $this->leftTorque = $leftTorque;
+	    $this->rightTorque = $rightTorque;
         return $leftTorque < 0 || $rightTorque >0;
     }
 
@@ -135,8 +135,13 @@ class Board {
      * @param $time
      */
     public function updateTime($turn, $time){
-        $this->player[$turn]->timeLeft -= ($time * 1e-6);
-        echo $this->player[$turn]->name . " has " . $this->player[$turn]->timeLeft . " seconds left\n";
+        $this->player[$turn]->timeLeft -= $time;
+
+        if($this->player[$turn]->timeLeft <= 0) {
+            $this->setGameOver($this->player[$turn]->timeLeft . " has ran out of time");
+        } else {
+            echo $this->player[$turn]->name . " has " . $this->player[$turn]->timeLeft . " seconds left\n";
+        }
     }
 
     function __construct($boardLength, $numberOfWeight, $boardWeight, $player1, $player2) {
