@@ -81,8 +81,8 @@ function beginScript($handle, $board, $finished) {
 			var myGameArea = {
 				canvas : document.createElement('canvas'),
 				start : function() {
-					this.canvas.width = 900;
-					this.canvas.height = 600;
+					this.canvas.width = 1600;
+					this.canvas.height = 900;
 					this.context = this.canvas.getContext('2d');
 					document.body.insertBefore(this.canvas, document.body.childNodes[0]);
 					drawTiles(this.canvas.width, this.canvas.height);
