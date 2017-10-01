@@ -205,7 +205,7 @@ function writeEndScript($handle, $board){
 				}
 			}
 			
-			start = (width/2)+180;
+			start = (width/2)+400;
 			down = 80;
 			right = 0;
 			for(var i = 1; i <= maxWeight; ++i){
