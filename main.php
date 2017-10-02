@@ -18,7 +18,7 @@ foreach ( $argv as $arg){
 	echo "Slowing down game\n";
     }
 }
-$myController = new GameController("localhost", $port);
+$myController = new GameController($host, $port);
 $myController->createConnection($numOfWeights);
 $myGame = new Board(30, $numOfWeights, 3, $myController->player1, $myController->player2);
 
