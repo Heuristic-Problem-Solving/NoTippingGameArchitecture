@@ -244,9 +244,9 @@ function writeEndScript($handle, $board){
 			ctx = myGameArea.context;
 			ctx.font = "30px Consolas";
 			ctx.fillStyle = "black";
-			var out = player1.name;
+			var out = player2.name;
 			if( turn == 2){
-				out = player2.name;
+				out = player1.name;
 			}
 			out = out + " Wins!";
 			var length = width - 168;
