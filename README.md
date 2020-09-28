@@ -8,6 +8,8 @@ The No Tipping game is a two person game that works as follows: the two players 
 
 As the game proceeds, the net torque around each support is calculated and displayed. The blocks, whether on the board or in the possession of the players, are displayed with their weight values. The torque is computed by weight times the distance to each support. Clockwise is negative torque and counterclockwise is positive torque. You want the net torque on the left support to be negative and the net torque on the right support to be positive.
 
+Check link: [https://cs.nyu.edu/courses/fall20/CSCI-GA.2965-001/notipping.html]
+
 ## Starting Server
 
 To begin the server, run `php main.php <hostname:portnumber> <number of weights>`. This will create a socket for communication to and from the server at 'hostname:portnumber'.
