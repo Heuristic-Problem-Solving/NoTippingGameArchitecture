@@ -259,5 +259,3 @@ function writeEndScript($handle, $board){
 
 	');
 }
-
-
