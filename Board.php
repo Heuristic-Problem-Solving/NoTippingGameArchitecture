@@ -167,4 +167,3 @@ class Board {
         $this->boardState[-4] = 3;
     }
 }
-
