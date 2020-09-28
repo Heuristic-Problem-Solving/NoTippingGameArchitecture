@@ -10,7 +10,7 @@ s.connect((HOST, PORT))
 myWeight = dict()
 
 first = 0
-name = "theRons"
+name = "RandomPlayer"
 
 for idx, val in enumerate(sys.argv):
     if(val == "-f"): 
@@ -21,7 +21,7 @@ s.sendall('{} {}'.format(name, first))
 
 
 k = int(s.recv(1024))
-print "Number of Weights is: " + str(k)
+print("Number of Weights is: " + str(k))
 
 for i in range(1, k):
     myWeight[i] = 1;
@@ -73,7 +73,7 @@ while(1):
         else:
             choice = random.choice(allPosition)
         myWeight[choice[0]] = 0
-        print "Added: " + str(choice)
+        print("Added: " + str(choice))
         s.sendall('{} {}'.format(choice[0], choice[1]))
 
     else:
@@ -90,7 +90,7 @@ while(1):
         else:
             choice = random.choice(allPossiblePosition)
             random.jumpahead(1);
-        print "Removed:" + str(choice)
+        print("Removed:" + str(choice))
         s.sendall('{}'.format(choice))
 
 
