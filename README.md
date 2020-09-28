@@ -54,7 +54,7 @@ When writing a client to interact with the server, the interaction works as foll
 
 ## Random Strategy Test Client
 
-test.py is included to test your algorithm against. NOTE: test.py was written on Python 2.7.
+test.py is included to test your algorithm against.
 
 To run the test script, use the same host name and port number that was used for the php script. For example, using our test.py you should use this command `python test.py <hostname:portnumber>`. Therefore, your code should also accept host name and port number as an argument.
 
