@@ -62,3 +62,4 @@ $myController->send(1, $myGame->generateSendingString());
 $myController->send(2, $myGame->generateSendingString());
 draw($myGame ,true);
 $myController->closeConnection();
+
