@@ -65,3 +65,7 @@ Description of random strategy: A Random Strategy should play the first or secon
 Start the main server as a separate process by running `php main.php <hostname:port> <number of weights> [-w]`. `-w` is an optional command line arguement which forces a 1 second pause between turns(this delay does not affect each clients allowed time to run). You Can also run an instance of the webserver for a visual depiction with the command `php -S <hostname:port>`. Make sure the port of the server and webserver are different.
 
 Have both clients establish a connection to the server. If you are using test client you can do so with `python test.py <hostname:port> [-f] <-n name>`. You can view the running game from the index.html file (by going to `localhost:8000/index.html`.
+
+## Contact Us 
+Agnes - asr647@nyu.edu
+Agnitha - amr1215@nyu.edu
