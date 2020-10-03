@@ -23,7 +23,7 @@ s.sendall('{} {}'.format(name, first))
 k = int(s.recv(1024))
 print("Number of Weights is: " + str(k))
 
-for i in range(1, k):
+for i in range(1, k+1):
     myWeight[i] = 1;
 
 def check_balance(board):
